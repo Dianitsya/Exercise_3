@@ -76,6 +76,20 @@ namespace Exercise_3
                 LAST = LAST.next;
             return true;
         }
+        public bool Search(int rollNo, ref Node previousious, ref Node currentent) /*Search for the specified node*/
+        {
+            previousious = LAST;
+            currentent = LAST;
+            while ((currentent != null) && (rollNo != currentent.rollNumber))
+            {
+                previousious = currentent;
+                currentent = currentent.next;
+            }
+            if (currentent == null)
+                return (false);/*returns false if the node is not found*/
+            else
+                return (true);
+        }
         
             }
         }
