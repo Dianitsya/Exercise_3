@@ -63,6 +63,19 @@ namespace Exercise_3
             newNode.next = currentent;
             previousious.next = newNode;
         }
+        /*Method to remove a specific Node in the list*/
+        public bool delNode(int rollNo)
+        {
+            Node previousious, currentent;
+            previousious = currentent = null;
+            /* /*check whether the node in question is on the list or not*/
+            if (Search(rollNo, ref previousious, ref currentent) == false)
+                return false;
+            previousious.next = currentent.next;
+            if (currentent == LAST)
+                LAST = LAST.next;
+            return true;
+        }
         
             }
         }
