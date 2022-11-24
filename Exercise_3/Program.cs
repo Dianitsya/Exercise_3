@@ -116,7 +116,96 @@ namespace Exercise_3
             else
                 return false;
         }
-        
+        public void firstNode()
+        {
+            if (ListEmpty())
+                Console.WriteLine("\n List is empty");
+            else
+                Console.WriteLine("\nThe first record in the list is:\n\n" + LAST.next.rollNumber + "     " + LAST.next.name);
+        }
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                CircularList obj = new CircularList();
+                while (true)
+                {
+                    try
+                    {
+                        Console.WriteLine("\nMenu");
+                        Console.WriteLine("\n 1. Add a record to the list");
+                        Console.WriteLine("\n 2. Delete a record from the list");
+                        Console.WriteLine("\n 3. View all the record in the list");
+                        Console.WriteLine("\n 4. Search for a record in the list ");
+                        Console.WriteLine("\n 5. Display the first record in the list");
+                        Console.WriteLine("\n 6. Exit");
+                        Console.Write("\n Enter your choice (1-6): ");
+                        char ch = Convert.ToChar(Console.ReadLine());
+                        switch (ch)
+                        {
+                            case '1':
+                                {
+                                    obj.addNode();
+                                }
+                                break;
+                            case '2':
+                                {
+                                    if (obj.ListEmpty())
+                                    {
+                                        Console.WriteLine("\nList Kosong");
+                                        break;
+                                    }
+                                    Console.Write("\n Enter the roll number of the student: ");
+                                    int rollNo = Convert.ToInt32(Console.ReadLine());
+                                    Console.WriteLine();
+                                    if (obj.delNode(rollNo) == false)
+                                        Console.WriteLine("Record not found");
+                                    else
+                                        Console.Write("Record with roll number " + rollNo + " deleted\n");
+                                }
+                                break;
+                            case '3':
+                                {
+                                    obj.traverse();
+                                }
+                                break;
+                            case '4':
+                                {
+                                    if (obj.ListEmpty() == true)
+                                    {
+                                        Console.WriteLine("\nList id Empty");
+                                        break;
+                                    }
+                                    Node previous, current;
+                                    previous = current = null;
+                                    Console.Write("\nEnter the rol number of the student whoses rocord you want to search:");
+                                    int num = Convert.ToInt32(Console.ReadLine());
+                                    if (obj.Search(num, ref previous, ref current) == false)
+                                        Console.WriteLine("\nRecord not found");
+                                    else
+                                    {
+                                        Console.WriteLine("\nRecord found");
+                                        Console.WriteLine("\nRoll number" + current.rollNumber);
+                                        Console.WriteLine("\nName:" + current.name);
+                                    }
+                                }
+                                break;
+                            case '5':
+                                {
+                                    obj.firstNode();
+                                }
+                                break;
+                            case '6':
+                                return;
+                            default:
+                                {
+                                    Console.WriteLine("\n Invalid option");
+                                }
+                                break;
+                        }
+                    }
+                    
+                }
             }
         }
     }
