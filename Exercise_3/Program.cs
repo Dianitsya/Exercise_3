@@ -204,7 +204,10 @@ namespace Exercise_3
                                 break;
                         }
                     }
-                    
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Check for the values entered");
+                    }
                 }
             }
         }
