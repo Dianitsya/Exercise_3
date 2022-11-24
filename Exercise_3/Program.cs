@@ -90,8 +90,26 @@ namespace Exercise_3
             else
                 return (true);
         }
-        
+        /*Method to visit and read the contents of the list*/
+        public void traverse()
+        {
+            if (ListEmpty())
+                Console.WriteLine("\nList Empty. \n");
+            else
+            {
+                Console.WriteLine("\nThe data in the list is : \n");
+                Node currententNode;
+                currententNode = LAST.next;
+                while (currententNode != null)
+                {
+                    Console.Write(currententNode.rollNumber + " " + currententNode.name + "\n");
+                    currententNode = currententNode.next;
+                }
+                Console.Write(LAST.rollNumber + " " + LAST.name + "\n");
+                Console.WriteLine();
             }
+        }
+        
         }
     }
 }
