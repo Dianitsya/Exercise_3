@@ -46,46 +46,46 @@ namespace Exercise_3
                 return;
             }
             /*Find the location of the new Node in the list*/
-            Node previousious, currentent;
-            previousious = LAST;
-            currentent = LAST;
-            while ((currentent != null) && (rollNo >= currentent.rollNumber))
+            Node previous, current;
+            previous = LAST;
+            current = LAST;
+            while ((current != null) && (rollNo >= current.rollNumber))
             {
-                if (rollNo == currentent.rollNumber)
+                if (rollNo == current.rollNumber)
                 {
                     Console.WriteLine();
                     return;
                 }
-                previousious = currentent;
-                currentent = currentent.next;
+                previous = current;
+                current = current.next;
             }
-            /*New node will be placed between previousious and currentent*/
-            newNode.next = currentent;
-            previousious.next = newNode;
+            /*New node will be placed between previous and current*/
+            newNode.next = current;
+            previous.next = newNode;
         }
         /*Method to remove a specific Node in the list*/
         public bool delNode(int rollNo)
         {
-            Node previousious, currentent;
-            previousious = currentent = null;
+            Node previous, current;
+            previous = current = null;
             /* /*check whether the node in question is on the list or not*/
-            if (Search(rollNo, ref previousious, ref currentent) == false)
+            if (Search(rollNo, ref previous, ref current) == false)
                 return false;
-            previousious.next = currentent.next;
-            if (currentent == LAST)
+            previous.next = current.next;
+            if (current == LAST)
                 LAST = LAST.next;
             return true;
         }
-        public bool Search(int rollNo, ref Node previousious, ref Node currentent) /*Search for the specified node*/
+        public bool Search(int rollNo, ref Node previous, ref Node current) /*Search for the specified node*/
         {
-            previousious = LAST;
-            currentent = LAST;
-            while ((currentent != null) && (rollNo != currentent.rollNumber))
+            previous = LAST;
+            current = LAST;
+            while ((current != null) && (rollNo != current.rollNumber))
             {
-                previousious = currentent;
-                currentent = currentent.next;
+                previous = current;
+                current = current.next;
             }
-            if (currentent == null)
+            if (current == null)
                 return (false);/*returns false if the node is not found*/
             else
                 return (true);
@@ -98,12 +98,12 @@ namespace Exercise_3
             else
             {
                 Console.WriteLine("\nThe data in the list is : \n");
-                Node currententNode;
-                currententNode = LAST.next;
-                while (currententNode != null)
+                Node currentNode;
+                currentNode = LAST.next;
+                while (currentNode != null)
                 {
-                    Console.Write(currententNode.rollNumber + " " + currententNode.name + "\n");
-                    currententNode = currententNode.next;
+                    Console.Write(currentNode.rollNumber + " " + currentNode.name + "\n");
+                    currentNode = currentNode.next;
                 }
                 Console.Write(LAST.rollNumber + " " + LAST.name + "\n");
                 Console.WriteLine();
