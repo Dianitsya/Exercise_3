@@ -109,7 +109,15 @@ namespace Exercise_3
                 Console.WriteLine();
             }
         }
+        public bool ListEmpty()
+        {
+            if (LAST == null)
+                return true;
+            else
+                return false;
+        }
         
+            }
         }
     }
 }
