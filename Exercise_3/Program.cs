@@ -16,12 +16,56 @@ namespace Exercise_3
     class CircularList
     {
         Node LAST;
+
         public CircularList()
         {
             LAST = null;
         }
-    static void Main(string[] args)
+        public void addNode()/*Method for adding a Node to the list */
         {
+            int rollNo;
+            string nm;
+            Console.WriteLine("\nEnter the roll Number of the student : ");
+            rollNo = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nEnter the roll Name of the student : ");
+            nm = Console.ReadLine();
+            Node newNode = new Node();
+            newNode.rollNumber = rollNo;
+            newNode.name = nm;
+
+            //if the node to be inserted is the first node
+            if (LAST == null || rollNo <= LAST.rollNumber)
+            {
+                if ((LAST != null) && (rollNo == LAST.rollNumber))
+                {
+                    Console.WriteLine("\n Duplicate number not allowed");
+                    return;
+                }
+                newNode.next = LAST;
+                LAST = newNode;
+                return;
+            }
+            /*Find the location of the new Node in the list*/
+            Node previousious, currentent;
+            previousious = LAST;
+            currentent = LAST;
+            while ((currentent != null) && (rollNo >= currentent.rollNumber))
+            {
+                if (rollNo == currentent.rollNumber)
+                {
+                    Console.WriteLine();
+                    return;
+                }
+                previousious = currentent;
+                currentent = currentent.next;
+            }
+            /*New node will be placed between previousious and currentent*/
+            newNode.next = currentent;
+            previousious.next = newNode;
+        }
+        
+            }
         }
     }
 }
+
